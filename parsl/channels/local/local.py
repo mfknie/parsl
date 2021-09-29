@@ -75,7 +75,7 @@ class LocalChannel(Channel, RepresentationMixin):
             logger.warning("Execution of command '{}' failed due to \n{}".format(cmd, e))
             raise
 
-        return (retcode, stdout.decode("utf-8"), stderr.decode("utf-8"))
+        return (retcode, stdout.decode("utf-8", errors="ignore"), stderr.decode("utf-8", errors="ignore"))
 
     def push_file(self, source, dest_dir):
         ''' If the source files dirpath is the same as dest_dir, a copy
